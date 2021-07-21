@@ -74,7 +74,6 @@
     <script src="js/tabs.js"></script>
     <script src="js/monitor.js"></script>
     <script>
-      const { ipcRenderer } = require('electron');
       const settingsForm = document.getElementById('settings-form');
       //get settings
       ipcRenderer.on('settings:get', (e, settings) => {
@@ -88,6 +87,7 @@
         ev.preventDefault();
         const cpuOverload = document.getElementById('cpu-overload').value;
         const alertFrequency = document.getElementById('alert-frequency').value;
+        console.log(cpuOverload);
         //send new setings to main
         ipcRenderer.send('settings:set', {
           cpuOverload,
